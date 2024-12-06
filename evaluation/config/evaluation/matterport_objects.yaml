@@ -1,0 +1,27 @@
+label_params:
+  type: "object" # ["object", "region"]
+
+  blacklisted_labels: [
+    "misc", "objects", "void", "unlabeled",
+    "wall", "floor", "ceiling",
+  ]
+
+viewpoint_kwargs:
+  far_dist_fn: !python/lambda "lambda entry: entry.extras['depth_percentiles']['0.8']"
+  near_dist_fn: null
+
+localization_kwargs:
+  params: 
+    voxel_voting:
+      viewpoint_weight: null  # [null, 'confidence']
+      voxel_size: 0.2
+      scoring_method: "normalized_votes"  # ['normalized_votes', 'votes']
+      
+    clustering:
+      algorithm: "dbscan"  # ['dbscan', 'hdbscan']
+      dbscan_kwargs:
+          eps: 0.4   # 2 * voxel_size
+          min_points: 5
+          print_progress: false
+      clustering_levels: [0.0, 0.25, 0.5, 0.75,]  # only used if 'scoring_method' == 'normalized_votes'
+      bounding_box_type: "axis_aligned"  # ['axis_aligned', 'oriented']

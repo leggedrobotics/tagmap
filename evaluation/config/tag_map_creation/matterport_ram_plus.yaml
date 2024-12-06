@@ -1,0 +1,21 @@
+model_params:
+  model: ram_plus
+  model_config:
+    ram_pretrained_path: ram_plus_swin_large_14m.pth   # set this to the path of the downloaded model checkpoint
+    ram_image_size: 384
+    vit: swin_l
+    device: cuda
+
+tag_map_generation_params:
+  matterport_viewpoint_near_dist: 0.2
+
+  filtered_tagging_params:
+    crop_border_proportions: [0.05, 0.1]
+
+  depth_filtering_params:
+    mean_threshold: 0.6
+    quantile_thresholds: [
+      [0.5, 0.6],  # [percentile, threshold]
+    ]
+
+  stored_depth_percentiles: [0.8]

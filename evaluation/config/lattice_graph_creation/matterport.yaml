@@ -1,0 +1,10 @@
+lattice_graph_creation_params:
+  lattice_grid_kwargs:
+    grid_res: 0.5
+    outer_pad: 0.1
+
+  lattice_filter_kwargs:
+    distance_threshold: 2.0
+    within_mesh_threshold: 0.0
+    kdtree_query_k: 10
+    kdtree_query_num_workers: 8

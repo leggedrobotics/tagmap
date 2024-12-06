@@ -1,0 +1,10 @@
+cvxpy==1.5.2
+hdbscan
+jupyterlab
+networkx
+open3d==0.17.0
+opencv-python
+pandas
+plyfile
+recognize-anything
+sentence-transformers
